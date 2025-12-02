@@ -1,0 +1,12 @@
+prefix=F:/mlflow-tracking-server/venv/Library
+exec_prefix=F:/mlflow-tracking-server/venv/Library
+libdir=F:/mlflow-tracking-server/venv/Library/lib
+includedir=F:/mlflow-tracking-server/venv/Library/include
+
+Name: libzmq
+Description: 0MQ c++ library
+Version: 4.3.5
+Libs: -L${libdir} -lzmq
+Libs.private: -lstdc++ 
+Requires.private: 
+Cflags: -I${includedir} 

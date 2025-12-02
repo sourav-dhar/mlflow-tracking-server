@@ -1,0 +1,13 @@
+prefix=F:/mlflow-tracking-server/venv/Library
+exec_prefix=F:/mlflow-tracking-server/venv/Library
+libdir=F:/mlflow-tracking-server/venv/Library/lib
+sharedlibdir=F:/mlflow-tracking-server/venv/Library/lib
+includedir=F:/mlflow-tracking-server/venv/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.3.1
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

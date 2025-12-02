@@ -9,6 +9,7 @@ os.environ["NO_PROXY"] = "127.0.0.1,localhost"
 
 import pandas as pd
 import mlflow
+import mlflow.sklearn
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -16,7 +17,10 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
+
+import dagshub
+dagshub.init(repo_owner='dharsourav03', repo_name='mlflow-tracking-server', mlflow=True)
+mlflow.set_tracking_uri("https://dagshub.com/dharsourav03/mlflow-tracking-server.mlflow")
 
 # Load the Iris dataset
 iris = load_iris()
@@ -61,6 +65,7 @@ with mlflow.start_run(run_name="rf_run_with_confusion_matrix"):
     # Save confusion matrix
     plt.savefig("confusion_matrix.png")
     mlflow.log_artifact("confusion_matrix.png")
+    mlflow.log_artifacts(__file__)
 
     # Log model
     mlflow.sklearn.log_model(rf, "random_forest_model")
